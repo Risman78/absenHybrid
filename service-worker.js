@@ -3,7 +3,7 @@ const assets = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/assets/img/prambanan.jpg',
+  '/assets/images/prambanan.jpg',
   '/assets/icons/icon-192.png',
   '/assets/icons/icon-512.png'
 ];
@@ -19,3 +19,4 @@ self.addEventListener('fetch', evt => {
     caches.match(evt.request).then(res => res || fetch(evt.request))
   );
 });
+

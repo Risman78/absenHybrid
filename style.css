@@ -8,7 +8,7 @@ html, body {
 
 /* Background utama */
 body {
-    background-image: url('assets/prambanan.jpg'); /* path relatif terhadap index.html */
+    background-image: url('assets/images/prambanan.jpg'); /* path relatif terhadap index.html */
     background-size: cover;      
     background-position: center; 
     background-repeat: no-repeat;
@@ -25,3 +25,4 @@ body::before {
     background: rgba(0,0,0,0.3);
     z-index: -1;
 }
+

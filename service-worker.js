@@ -1,25 +1,41 @@
-const CACHE_NAME = 'absensi-cache-v1';
+const CACHE_NAME = "absensi-pwa-v1";
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/js/app.js',
-  '/assets/images/prambanan.jpg',
-  '/assets/icons/icon-192.png',
-  '/assets/icons/icon-512.png'
+  "/",
+  "/index.html",
+  "/app.js",
+  "/manifest.json",
+  "/assets/images/prambanan.jpg",
+  "/assets/icons/icon-192.png",
+  "/assets/icons/icon-512.png"
 ];
 
-self.addEventListener('install', e=>{
-  e.waitUntil(
-    caches.open(CACHE_NAME)
-    .then(cache=>cache.addAll(urlsToCache))
+// Install
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
   );
 });
 
-self.addEventListener('fetch', e=>{
-  e.respondWith(
-    caches.match(e.request).then(response=>{
-      return response || fetch(e.request);
-    })
+// Activate
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+    )
+  );
+});
+
+// Fetch
+self.addEventListener("fetch", event => {
+  if (event.request.method !== "GET") return;
+
+  event.respondWith(
+    caches.match(event.request).then(response =>
+      response || fetch(event.request).catch(() => {
+        if (event.request.destination === "document") {
+          return caches.match("/index.html");
+        }
+      })
+    )
   );
 });

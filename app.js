@@ -121,7 +121,7 @@ async function submitAttendance(type){
 
     if(isOnline()){
       // Panggil Google Apps Script
-      const url = "https://script.google.com/macros/s/.../exec"; // ganti dengan URL GAS
+      const url = "https://script.google.com/macros/s/AKfycbzZLMlM58rCFiOi2beJ3KuhIpymBOxxf3uKW5ab4VYsPGxxpOqqlovTlshhVNXJc1pe/exec"; // ganti dengan URL GAS
       const params = {employeeId:empId,type:type,lat:lat,lng:lng,token:token,accuracy:accuracy};
       try{
         const res = await fetch(url+"?"+new URLSearchParams(params));
@@ -167,7 +167,7 @@ window.addEventListener('online', async ()=>{
   const pending = await getAllPending();
   for(const p of pending){
     try{
-      const url = "https://script.google.com/macros/s/.../exec"; // ganti dengan URL GAS
+      const url = "https://script.google.com/macros/s/AKfycbzZLMlM58rCFiOi2beJ3KuhIpymBOxxf3uKW5ab4VYsPGxxpOqqlovTlshhVNXJc1pe/exec"; // ganti dengan URL GAS
       const params = {employeeId:p.employeeId,type:p.type,lat:p.lat,lng:p.lng,token:token,accuracy:p.accuracy};
       const res = await fetch(url+"?"+new URLSearchParams(params));
       const text = await res.text();

@@ -1,28 +1,22 @@
-/* Pastikan seluruh halaman tinggi penuh */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+body{
+  font-family: sans-serif;
+  margin:0;
+  padding:0;
+  background-size:cover;
+  background-position:center;
 }
-
-/* Background utama */
-body {
-    background-image: url('assets/images/prambanan.jpg'); /* path relatif terhadap index.html */
-    background-size: cover;      
-    background-position: center; 
-    background-repeat: no-repeat;
+#installPrompt{
+  position:fixed;
+  top:10px; left:50%;
+  transform:translateX(-50%);
+  background:#fff; padding:15px; border:1px solid #ccc; z-index:1000;
+  display:none;
 }
-
-/* Overlay gelap supaya teks terbaca */
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.3);
-    z-index: -1;
+#appContainer{padding:20px;}
+#menu, #absensiMenu{margin-bottom:15px;}
+#historyTable{width:100%; border-collapse:collapse;}
+#historyTable th, #historyTable td{border:1px solid #ccc; padding:5px; text-align:center;}
+button{padding:8px 15px; margin:5px; cursor:pointer;}
+@media(max-width:600px){
+  button{width:100%; margin:5px 0;}
 }
-
